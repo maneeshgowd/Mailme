@@ -1,0 +1,48 @@
+.application {
+  width: 100%;
+  max-width: $width;
+  // margin:0 auto;
+  height: auto;
+  background: inherit;
+  animation: anim 2s 0s 1 ease;
+  
+  &__window {
+    display: flex;
+    position: relative;
+    min-height: $height;
+  }
+
+  &__features {
+    width: 8%;
+    background: $typo-clr;
+  }
+
+  &__ui {
+    width: 92%;
+    background: inherit;
+
+    @include flex(center, center);
+    .ui-wrapper {
+      width: 70%;
+    }
+  }
+
+  @keyframes anim {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+
+//! helper classes
+
+.display {
+  display: none;
+}
+
+

@@ -1,0 +1,192 @@
+//loader animation
+
+.loader {
+  position: absolute;
+  width: 3em;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+
+  div {
+    width: 0.8em;
+    height: 1.2em;
+    background: $typo-clr;
+    animation: spinner 500ms 0s infinite ease;
+  }
+
+  .l-1 {
+    animation-delay: 100ms;
+  }
+
+  .l-2 {
+    animation-delay: 200ms;
+  }
+
+  .l-3 {
+    animation-delay: 300ms;
+  }
+
+  @keyframes spinner {
+    from {
+      height: 2em;
+    }
+
+    to {
+      height: 1.2em;
+    }
+  }
+}
+
+// message component
+
+.message {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 35em;
+  min-height: 20em;
+  background-color: $bg-clr;
+  filter: $shadow;
+  border-radius: $border-radius;
+  z-index: 5;
+  transition: all 500ms ease;
+
+  &__header {
+    padding: 0 2em;
+    height: 2.6em;
+    background-color: $typo-clr;
+    @include flex(space-between, center);
+    border-radius: $border-radius $border-radius 0 0;
+  }
+
+  &__title {
+    color: $bg-clr;
+    font-weight: $f-semi-bold;
+    font-size: 1.125rem;
+  }
+
+  &__cancel {
+    width: $icons;
+    cursor: pointer;
+  }
+
+  &__body {
+    width: 100%;
+    @include flex(center, flex-start, column);
+    margin-top: 1em;
+
+    & label,
+    & textarea {
+      width: 100%;
+      border-bottom: 1px solid lighten($typo-clr, 50%);
+      margin-bottom: 1em;
+
+      & input {
+        width: 100%;
+      }
+    }
+
+    & textarea {
+      resize: none;
+    }
+  }
+
+  & .footer {
+    @include flex(space-between, center, row);
+    margin-bottom: 1em;
+
+    & .send-btn {
+      background-color: $accent-clr;
+      border-radius: 5em;
+      color: $bg-clr;
+      font-weight: $f-semi-bold;
+      padding: 0.5em 1.5em;
+      cursor: pointer;
+      filter: $shadow;
+      transition: box-shadow 300ms ease;
+
+      &:hover,
+      &:focus {
+        box-shadow: 0 5px 10px rgba($accent-clr, 0.5);
+      }
+    }
+
+    & .delete-msg {
+      width: $icons;
+      cursor: pointer;
+      background-color: transparent;
+    }
+  }
+
+  & > * + * {
+    padding: 0 2em;
+  }
+}
+
+.error-comp {
+  background-color: $bg-clr;
+  max-width: 20em;
+  border-radius: $border-radius;
+  position: absolute;
+  top: 2em;
+  left: 40%;
+  transform: translateY(30%);
+  display: grid;
+  place-items: center;
+  color: $typo-clr;
+  font-weight: $f-medium;
+  filter: $shadow;
+  border: 2px solid $red-clr;
+  transition: all 300ms ease;
+  padding: 1em;
+  font-size: 1.125rem;
+  transition: all 500ms ease;
+}
+
+.check-comp {
+  position: absolute;
+  bottom: 5em;
+  left: 16em;
+  border-radius: 5em;
+  background-color: $bg-clr;
+  filter: $shadow;
+  width: 8em;
+  height: 3.7em;
+  @include flex(center, center);
+  cursor: pointer;
+  border: 2px solid $accent-clr;
+  transform: rotate(90deg);
+  transition: all 300ms ease;
+
+  & button {
+    background-color: transparent;
+    height: 100%;
+    padding: 0 0.7em;
+    transform: rotateZ(-90deg);
+    transition: transform 200ms ease;
+
+    & img{
+      pointer-events: none;
+    }
+
+    &:hover {
+      transform: scale(1.1) rotateZ(-90deg);
+    }
+  }
+}
+
+.opacity{
+  opacity:0.3;
+  pointer-events: none;
+}
+
+.comp-helper {
+  opacity: 0;
+  pointer-events: none;
+  transform: perspective(4px) translateZ(-1px);
+}

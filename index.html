@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/sass/main.scss" />
+    <link rel="icon shortcut" href="src/img/logo-title.svg" type="image/x-icon" />
+    <script defer src="src/js/controller.js"></script>
+    <title>Mailme</title>
+  </head>
+  <body>
+    <main class="responsive-container userform">
+      <header class="header">
+        <img src="src/img/mailme-logo.svg" alt="mailme" class="mailme-logo" />
+        <h2 class="mailme-logo-name"><span class="specific-style">M</span>ailme</h2>
+      </header>
+      <div class="createuser display">
+        <form>
+          <h2 class="createuser__title">Create an account</h2>
+          <label>
+            <input
+              type="text"
+              minlength="5"
+              placeholder="Full name"
+              autocomplete="off"
+              class="input"
+              id="createuser__name"
+              required
+            />
+          </label>
+          <label>
+            <input
+              type="email"
+              placeholder="Email"
+              class="input"
+              autocomplete="off"
+              id="createuser__email"
+              required
+            />
+          </label>
+          <div class="flex-child">
+            <label>
+              <input
+                type="password"
+                autocomplete="off"
+                minlength="8"
+                class="input"
+                placeholder="Password"
+                id="createuser__pass"
+                required
+              />
+            </label>
+            <label>
+              <input
+                autocomplete="off"
+                type="password"
+                placeholder="Repeat password"
+                class="input"
+                minlength="8"
+                id="createuser__repass"
+                required
+              />
+            </label>
+          </div>
+          <button class="input" id="submitBtn">submit</button>
+          <a href="#" class="login-acc" id="login-acc">Log in?</a>
+        </form>
+      </div>
+      <div class="loginuser">
+        <form>
+          <h2 class="createuser__title">Log in</h2>
+          <label>
+            <input
+              type="email"
+              placeholder="Email"
+              required
+              class="input"
+              autocomplete="off"
+              id="loginuser__email"
+            />
+          </label>
+          <label>
+            <input
+              type="password"
+              autocomplete="off"
+              minlength="8"
+              required
+              class="input"
+              placeholder="Password"
+              id="loginuser__pass"
+            />
+          </label>
+          <button class="input" id="login">log in</button>
+          <a href="#" class="create-acc" id="create-acc">Create an account?</a>
+        </form>
+      </div>
+    </main>
+    <main class="application display">
+      <section class="application__window" data-logged="false" data-user="">
+        <aside class="application__features">
+          <div class="application__flex-1">
+            <img src="src/img/mailme-logo-2.svg" alt="mailme" class="mailme-logo" />
+          </div>
+          <div class="application__flex-2">
+            <a href="#" class="active anchor" id="inbox" title="Inbox">
+              <img src="src/img/messages.svg" alt="messages" class="features" />
+            </a>
+            <a href="#" class="anchor" id="starred" title="Starred">
+              <img src="src/img/star.svg" alt="starred" class="features" />
+            </a>
+            <a href="#" class="anchor" id="draft" title="Draft">
+              <img src="src/img/draft.svg" alt="draft" class="features" />
+            </a>
+            <a href="#" class="anchor" id="sent" title="Sent">
+              <img src="src/img/sent.svg" alt="sent" class="features" />
+            </a>
+          </div>
+          <div class="application__flex-3">
+            <a href="" id="logout">
+              <img src="src/img/logout.svg" alt="logout" title="Logout" class="features" />
+            </a>
+            <div class="user-icon"></div>
+          </div>
+        </aside>
+        <section class="application__ui">
+          <div class="ui-wrapper">
+            <div class="ui__header">
+              <div class="header-title">
+                <h1 class="ui__title-lrg" id="active-title">Inbox</h1>
+                <h3 class="ui__title-mini">There are total <span>0</span> mails</h3>
+              </div>
+              <button class="message-btn" id="new-mail">
+                <img src="src/img/compose.svg" alt="" class="compose" /> compose
+              </button>
+            </div>
+            <div class="application-mails" data-elements="" id="inbox"></div>
+            <div class="application-starred display" data-elements="" id="starred"></div>
+            <div class="application-draft display" data-elements="" id="draft"></div>
+            <div class="application-sent display" data-elements="" id="sent"></div>
+          </div>
+        </section>
+      </section>
+    </main>
+    <div class="display loader">
+      <div class="l-1"></div>
+      <div class="l-2"></div>
+      <div class="l-3"></div>
+    </div>
+    <div class="comp-helper error-comp"></div>
+    <div class="comp-helper message">
+      <div class="message__header">
+        <h2 class="message__title">New message</h2>
+        <img src="src/img/cancel.svg" alt="close" id="cancel" class="message__cancel" />
+      </div>
+      <div class="message__body">
+        <label>
+          <input type="email" class="msg" id="receiver-email" required placeholder="To" />
+        </label>
+        <label>
+          <input type="text" class="msg" id="subject" required placeholder="Subject" />
+        </label>
+        <textarea
+          name="reciver-message"
+          class="msg"
+          required
+          minlength="20"
+          id="message-box"
+          cols="30"
+          rows="10"
+        ></textarea>
+      </div>
+      <div class="footer">
+        <button class="send-btn">send</button>
+        <button class="delete-msg">
+          <img src="src/img/delete.svg" alt="delete" class="features" />
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

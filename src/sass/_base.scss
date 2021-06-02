@@ -1,0 +1,112 @@
+// colors
+$accent-clr: #7c5df9;
+$bg-clr: #fff;
+$bg-light-clr: #f8f7fc;
+$typo-clr: #373b54;
+$green-clr: #00c844;
+$red-clr: #d82435;
+
+// styling
+$border-radius: 10px;
+$font-size: 16px;
+
+// font
+
+$font-family: Raleway;
+$f-normal: 400;
+$f-medium: 500;
+$f-semi-bold: 600;
+$f-bold: 700;
+$f-extra-bold: 800;
+
+//box-shadow
+$shadow: drop-shadow(0 10px 15px rgba(darken($accent-clr, 30%), 0.15));
+
+//logo-width
+$logo: 2.25em;
+$icons: 1.5em;
+
+//ui-window (width,height)
+$width: 96em;
+$height: calc(99vh + 0.5em);
+//48.875em
+
+// quick-center and flex-box;
+@mixin grid {
+  display: grid;
+  place-items: center;
+}
+
+@mixin flex($justify: center, $align: center, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+///////////////////////////////////////
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  scrollbar-width: thin;
+  scrollbar-color: $accent-clr lighten($typo-clr,65%);
+  scroll-behavior: smooth;
+}
+
+html {
+  font-size: $font-size;
+}
+
+body {
+  font-family: $font-family, open sans;
+  background-color: $bg-light-clr;
+  line-height: 1.4;
+  color: $typo-clr;
+  letter-spacing: 0.5px;
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: lighten($typo-clr,65%);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $accent-clr;
+  border-radius: 20px;
+  border: 3.5px solid lighten($typo-clr,65%);
+}
+
+input,
+button,
+textarea {
+  font-size: 1rem;
+  font-family: $font-family;
+  border: 0;
+  color: $typo-clr;
+}
+
+img::selection {
+  display: none !important;
+}
+
+::placeholder {
+  font-size: 0.9rem;
+}
+
+.responsive-container {
+  width: 90%;
+  max-width: 75rem;
+  margin: 0 auto;
+}
+
+.specific-style {
+  color: $accent-clr;
+}

@@ -1,0 +1,295 @@
+.application__features {
+  @include flex(space-between, center, column);
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+
+  .application__flex-1 {
+    width: 100%;
+    height: 7em;
+    border-top-right-radius: 1rem;
+    background-color: $accent-clr;
+    @include grid;
+
+    .mailme-logo {
+      width: $logo + 1.125em;
+    }
+  }
+
+  .application__flex-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+
+    & a > img {
+      pointer-events: none;
+    }
+  }
+
+  & a {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    @include grid;
+
+    &:hover,
+    &:focus {
+      background: lighten($typo-clr, 10%);
+      // border-radius: 50%;
+    }
+  }
+
+  .application__flex-3 {
+    width: 100%;
+    height: 10em;
+    border-top: 1px solid lighten($typo-clr, 15%);
+    @include flex(center, center, column);
+    gap: 2em;
+
+    .user-icon {
+      width: 2em;
+      height: 2em;
+      background-color: $bg-clr;
+      border-radius: 50%;
+    }
+  }
+}
+
+.ui__header {
+  @include flex(space-between, center);
+  margin: 2em 0 4em 0;
+
+  .header-title {
+    .ui__title-lrg {
+      font-size: 3.375rem;
+      font-weight: $f-bold;
+    }
+
+    .ui__title-mini {
+      font-weight: $f-medium;
+      font-size: 0.9rem;
+      color: lighten($typo-clr, 40%);
+
+     span{
+        font-family: open sans;
+        font-weight:$f-medium;
+        color:inherit;
+      }
+    }
+  }
+
+  .message-btn {
+    background-color: $accent-clr;
+    border-radius: 5em;
+    padding-right: 1em;
+    font-size: 1rem;
+    font-weight: $f-semi-bold;
+    color: $bg-clr;
+    @include flex(space-between, center);
+    gap: 0.5em;
+    cursor: pointer;
+    transition: box-shadow 300ms ease;
+
+    .compose {
+      width: $logo + 0.8em;
+      transition: transform 500ms ease;
+      pointer-events: none;
+    }
+
+    &:hover .compose,
+    &:focus .compose {
+      transform: rotateZ(90deg);
+    }
+
+    &:hover,
+    &:focus {
+      box-shadow: 0 5px 10px rgba($accent-clr, 0.5);
+    }
+  }
+}
+
+.application-mails {
+  width: 100%;
+  height: 32rem;
+
+  .user-mails {
+    margin-bottom: 1em;
+
+    .application__mail {
+      width: 80%;
+      min-height: 4.5em;
+      background-color: $bg-clr;
+      @include flex(space-between, center);
+      justify-items: flex-start;
+      margin: 0 auto;
+      border-radius: $border-radius;
+      filter: $shadow;
+      margin-bottom: 1em;
+      padding: 0 2em;
+      cursor: pointer;
+      animation: anim 500ms 0s 1 ease;
+
+      &-icons {
+        display: flex;
+        gap: 1.5em;
+      }
+
+      .application__mailer {
+        font-size: 1.125rem;
+        font-weight: $f-semi-bold;
+        pointer-events: none;
+      }
+
+      .application__date {
+        color: $typo-clr;
+        font-weight: $f-normal;
+        font-size: 0.9rem;
+        font-family: open sans;
+        color: lighten($typo-clr, 30%);
+      }
+
+      .application__status {
+        background-color: lighten($typo-clr, 65%);
+        padding: 0.4em 0.8em 0.4em 2em;
+        border-radius: $border-radius;
+        // color: $green-clr;
+        font-weight: $f-medium;
+        position: relative;
+        font-size: 0.9rem;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 12px;
+          left: 12px;
+          width: 0.6em;
+          height: 0.6em;
+          border-radius: 50%;
+          // background-color: $green-clr;
+        }
+      }
+
+      &:hover,
+      &:focus {
+        border: 3px solid $accent-clr;
+      }
+
+      @keyframes anim {
+        from {
+          transform: translateY(20px);
+        }
+        to {
+          transform: translate(0);
+        }
+      }
+    }
+
+    .user-message {
+      width: 80%;
+      background-color: $bg-clr;
+      margin: 0 auto;
+      border-radius: $border-radius;
+      filter: $shadow;
+      padding: 1em 2em;
+
+      .message-header {
+        @include flex(space-between, flex-start);
+        border-bottom: 1px solid lighten($typo-clr, 60%);
+        padding-bottom: 1rem;
+
+        .user-mail {
+          font-weight: $f-normal;
+          color: lighten($typo-clr, 30%);
+          font-size: 1rem;
+          margin-bottom: 1rem;
+        }
+
+        .user-subject {
+          font-weight: $f-semi-bold;
+          font-size: 1.125rem;
+        }
+
+        .message-date,
+        .message-time {
+          display: block;
+          text-align: right;
+          font-size: 0.9rem;
+          margin: 0.5em 0;
+          font-family: open sans;
+          color: lighten($typo-clr, 30%);
+        }
+      }
+
+      .message-body {
+        width: 100%;
+        overflow-y: scroll;
+        max-height: 20em;
+        padding-top: 1em;
+      }
+    }
+  }
+}
+
+.application-mails *::selection {
+  display: none;
+}
+
+.application-sent,
+.application-starred,
+.application-draft {
+  @extend .application-mails;
+}
+
+.right-arrow {
+  pointer-events: none !important;
+}
+
+.features {
+  width: $icons;
+  cursor: pointer;
+}
+
+.active {
+  background: lighten($typo-clr, 10%);
+}
+
+.application__arrow {
+  transform: rotateZ(90deg);
+}
+
+.fill-me {
+  fill: $bg-clr;
+  pointer-events: none;
+}
+
+.overflow {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border-bottom: 1px solid rgb(211, 211, 211);
+}
+
+.info-wrapper {
+  @include flex(space-between, center);
+  gap: 4em;
+  pointer-events: none;
+}
+
+.inbox__status {
+  color: $green-clr;
+
+  &::before {
+    background-color: $green-clr;
+  }
+}
+
+.sentbox__status {
+  color: $red-clr;
+
+  &::before {
+    background-color: $red-clr;
+  }
+}
+
+
+#checkbox > *, #not-starred > *{
+  pointer-events: none;
+}

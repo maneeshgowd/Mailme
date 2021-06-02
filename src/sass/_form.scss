@@ -1,0 +1,135 @@
+@mixin tablet {
+  @media screen and (min-width: 500px) {
+    @content;
+  }
+}
+
+.header {
+  display: flex;
+  gap: 0.5em;
+  min-height: 5em;
+  align-items: center;
+
+  .mailme-logo {
+    width: $logo;
+  }
+
+  .mailme-logo-name {
+    font-size: 1.5rem;
+    font-weight: $f-bold;
+    margin-top: -0.4em;
+  }
+}
+
+.userform__title {
+  font-size: 2.25rem;
+  text-align: center;
+  margin: 1rem 0 2rem 0;
+  font-style: italic;
+  font-weight: $f-extra-bold;
+}
+
+.createuser {
+  background-color: $bg-clr;
+  border-radius: $border-radius;
+  filter: $shadow;
+  max-width: 28rem;
+  margin: 0 auto;
+  padding: 1.5em;
+  margin-top: 2em;
+  animation: anim 1.5s 1 ease;
+
+  @include tablet {
+    margin-top: 4em;
+  }
+
+  form {
+    width: 100%;
+
+    .createuser__title {
+      font-size: 1.5rem;
+      font-weight: $f-semi-bold;
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+
+@keyframes anim {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.flex-child {
+  @include tablet {
+    display: flex;
+    gap: 1em;
+    justify-content: space-between;
+  }
+}
+
+.login-acc {
+  display: block;
+  text-align: center;
+  color: lighten($typo-clr, 20%);
+  margin: 1rem;
+
+  &:visited,
+  &:hover {
+    color: $accent-clr;
+  }
+}
+
+.input {
+  width: 100%;
+  background-color: $bg-light-clr;
+  border-radius: $border-radius;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+
+  &:focus-within {
+    border: 2px solid $typo-clr;
+    outline: 0;
+  }
+}
+
+button.input {
+  background-color: $accent-clr;
+  border: 0;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  font-weight: $f-semi-bold;
+  color: $bg-clr;
+
+  &:hover {
+    box-shadow: 0 10px 10px rgba($typo-clr, 0.2);
+  }
+}
+
+/// login user
+
+.loginuser {
+  @extend .createuser;
+
+  .create-acc {
+    @extend .login-acc;
+  }
+}
+
+.error {
+  border: 2px solid $red-clr;
+}
+
+.success {
+  border: 2px solid $green-clr;
+}
+
+
+
+ 
