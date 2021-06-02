@@ -414,5 +414,8 @@ async function sentMessages(document) {
   // renderer.addHandlerDraftComp(renderdraftFuture, deleteDraftFuture);
 })();
 
+async function deleteUser(user) {
+  await model.deleteAllUsers(user);
+}
 
-// model.deleteAllUsers();
+// deleteUser("maneesh@gmail.com");
